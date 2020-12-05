@@ -1,0 +1,10 @@
+{
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "cSpell.words": [
+    "compat",
+    "craco",
+    "formatjs",
+    "tailwindcss"
+  ],
+  "jestrunner.jestCommand": "npm run test --"
+}

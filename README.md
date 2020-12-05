@@ -1,2 +1,3 @@
-# react-testing-library
-A demo for using react testing library with next.js
+# React testing library with Next.js
+
+A demo for using react testing library with Next.js
