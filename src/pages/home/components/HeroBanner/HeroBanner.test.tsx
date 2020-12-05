@@ -2,7 +2,7 @@ import { render, screen } from '@utility/testing';
 import { HeroBanner } from './HeroBanner';
 
 describe('<HeroBanner />', () => {
-  it('renders header correctly with children with children', () => {
+  it('renders correctly', () => {
     render(<HeroBanner />);
     expect(
       screen.getByRole('heading', { name: 'Get certified now' })
