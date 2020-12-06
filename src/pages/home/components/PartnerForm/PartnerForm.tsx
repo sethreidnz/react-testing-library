@@ -1,6 +1,7 @@
 import { Form } from "react-final-form";
 import { useHistory } from "react-router-dom";
 import { TextInputField } from "@components/forms";
+import { generateQueryString } from "@utility/queryString";
 
 interface PartnerFormValues {
   companyName?: string;
@@ -10,11 +11,8 @@ interface PartnerFormValues {
 export const PartnerForm = () => {
   const history = useHistory();
   const onSubmit = async (values: PartnerFormValues) => {
-    history.push(
-      `/certificate?email=${encodeURIComponent(
-        values.companyName!
-      )}&companyName=${encodeURIComponent(values.companyName!)}`
-    );
+    const search = generateQueryString(values);
+    history.push({ pathname: "/certificate", search });
   };
   const validate = (values: PartnerFormValues) => {
     const errors: PartnerFormValues = {};
@@ -28,8 +26,8 @@ export const PartnerForm = () => {
   };
   return (
     <Form
-      onSubmit={onSubmit}
-      validate={validate}
+      onSubmit={(values) => onSubmit(values)}
+      validate={(values) => validate(values)}
       render={({ handleSubmit, submitting, pristine }) => (
         <form onSubmit={handleSubmit}>
           <h2 className="text-4xl">Enter your company details</h2>
@@ -55,7 +53,7 @@ export const PartnerForm = () => {
             bg-gray-800 w-full text-white rounded-lg
             px-6 py-3 block shadow-xl hover:text-white hover:bg-black"
               type="submit"
-              disabled={submitting || pristine}
+              disabled={submitting}
             >
               Submit
             </button>
