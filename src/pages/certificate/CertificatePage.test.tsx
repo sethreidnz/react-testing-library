@@ -24,7 +24,7 @@ describe("<Certificate />", () => {
     expect(screen.getByText("Sorry something went wrong"));
   });
 
-  it("renders correctly if it has all of the required fields", () => {
+  it("renders correctly if it has all of the required fields in the url query string", () => {
     const companyName = "Test company";
     const email = "test@test.com";
     const route = `/certificate?companyName=${encodeURIComponent(
