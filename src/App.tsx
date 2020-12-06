@@ -1,20 +1,16 @@
-import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { HomePage, CertificatePage } from '@pages';
-import { DefaultLayout } from '@components/layouts';
+import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { HomePage, CertificatePage } from "@pages";
+import { DefaultLayout } from "@components/layouts";
 
 function App() {
   return (
     <Router>
       <Switch>
+        <Route path="/certificate" component={CertificatePage} />
         <DefaultLayout>
-          <Route path="/" exact>
-            <HomePage />
-          </Route>
+          <Route exact path="/" component={HomePage} />
         </DefaultLayout>
-        <Route path="/" exact>
-          <CertificatePage />
-        </Route>
       </Switch>
     </Router>
   );

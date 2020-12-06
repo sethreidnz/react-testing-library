@@ -1,10 +1,10 @@
-import { HeroBanner, HighlightColumns, PartnerForm } from './components';
+import { HeroBanner, BenefitsRow, PartnerForm } from "./components";
 
 export const HomePage = () => {
   return (
     <div className="container mx-auto">
       <HeroBanner />
-      <HighlightColumns />
+      <BenefitsRow />
       <PartnerForm />
     </div>
   );

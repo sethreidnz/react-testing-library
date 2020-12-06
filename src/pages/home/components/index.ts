@@ -1,3 +1,3 @@
-export * from './HeroBanner';
-export * from './HighlightColumns';
-export * from './PartnerForm';
+export * from "./HeroBanner";
+export * from "./BenefitsRow";
+export * from "./PartnerForm";

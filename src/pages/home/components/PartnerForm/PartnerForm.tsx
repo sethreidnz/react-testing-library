@@ -1,5 +1,6 @@
-import { Form, Field } from 'react-final-form';
-import { TextInput } from '@components/forms';
+import { Form } from "react-final-form";
+import { useHistory } from "react-router-dom";
+import { TextInputField } from "@components/forms";
 
 interface PartnerFormValues {
   companyName?: string;
@@ -7,29 +8,45 @@ interface PartnerFormValues {
 }
 
 export const PartnerForm = () => {
+  const history = useHistory();
   const onSubmit = async (values: PartnerFormValues) => {
-    window.alert(JSON.stringify(values, undefined, 2));
+    history.push(
+      `/certificate?email=${encodeURIComponent(
+        values.companyName!
+      )}&companyName=${encodeURIComponent(values.companyName!)}`
+    );
+  };
+  const validate = (values: PartnerFormValues) => {
+    const errors: PartnerFormValues = {};
+    if (!values.email) {
+      errors.email = "Email is required";
+    }
+    if (!values.companyName) {
+      errors.companyName = "Company name is required";
+    }
+    return errors;
   };
   return (
     <Form
       onSubmit={onSubmit}
+      validate={validate}
       render={({ handleSubmit, submitting, pristine }) => (
         <form onSubmit={handleSubmit}>
           <h2 className="text-4xl">Enter your company details</h2>
           <div>
-            <label className="px-1 text-sm text-gray-600">Company Name</label>
-            <Field<string>
-              name="companyName"
-              component={TextInput}
-              placeholder="Company Name"
+            <TextInputField
+              name={"companyName"}
+              label={"Company name"}
+              placeholder={"Company name"}
+              isDisabled={submitting}
             />
           </div>
           <div>
-            <label className="px-1 text-sm text-gray-600">Company Name</label>
-            <Field<string>
-              name="email"
-              component={TextInput}
-              placeholder="Email"
+            <TextInputField
+              name={"email"}
+              label={"Email"}
+              placeholder={"Email"}
+              isDisabled={submitting}
             />
           </div>
           <div>
