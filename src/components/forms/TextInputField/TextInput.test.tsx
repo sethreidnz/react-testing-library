@@ -2,7 +2,7 @@ import userEvent from "@testing-library/user-event";
 import { render, screen, TestFinalForm } from "@utility/testing";
 import { TextInputField, TextInputFieldProps } from "./TextInputField";
 
-type TaxNumberTypeFormValues = {
+type TextInputFieldFormValues = {
   textField?: string;
 };
 
@@ -15,7 +15,7 @@ describe("<TextInputField />", () => {
       isDisabled: false,
     };
     const submitText = "Submit";
-    const initialValues: TaxNumberTypeFormValues = {
+    const initialValues: TextInputFieldFormValues = {
       textField: "",
     };
     const errorMessage = "The field is required";
@@ -53,7 +53,7 @@ describe("<TextInputField />", () => {
       isDisabled: false,
     };
     const submitText = "Submit";
-    const initialValues: TaxNumberTypeFormValues = {
+    const initialValues: TextInputFieldFormValues = {
       textField: "",
     };
     const errorMessage = "The field is required";
@@ -96,7 +96,7 @@ describe("<TextInputField />", () => {
       isDisabled: false,
     };
     const submitText = "Submit";
-    const initialValues: TaxNumberTypeFormValues = {
+    const initialValues: TextInputFieldFormValues = {
       textField: "",
     };
     const errorMessage = "The field is required";
@@ -137,7 +137,7 @@ describe("<TextInputField />", () => {
       isDisabled: false,
     };
     const submitText = "Submit";
-    const initialValues: TaxNumberTypeFormValues = {
+    const initialValues: TextInputFieldFormValues = {
       textField: "",
     };
     const errorMessage = "The field is required";

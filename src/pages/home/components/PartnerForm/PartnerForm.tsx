@@ -1,19 +1,14 @@
 import { Form } from "react-final-form";
-import { useHistory } from "react-router-dom";
-import { TextInputField } from "@components/forms";
-import { generateQueryString } from "@utility/queryString";
+import { TextInputField, FileUploadField } from "@components/forms";
 
 interface PartnerFormValues {
   companyName?: string;
   email?: string;
+  logo?: string;
 }
 
 export const PartnerForm = () => {
-  const history = useHistory();
-  const onSubmit = async (values: PartnerFormValues) => {
-    const search = generateQueryString(values);
-    history.push({ pathname: "/certificate", search });
-  };
+  const onSubmit = async (values: PartnerFormValues) => {};
   const validate = (values: PartnerFormValues) => {
     const errors: PartnerFormValues = {};
     if (!values.email) {
@@ -21,6 +16,9 @@ export const PartnerForm = () => {
     }
     if (!values.companyName) {
       errors.companyName = "Company name is required";
+    }
+    if (!values.logo) {
+      errors.logo = "Company logo is required";
     }
     return errors;
   };
@@ -44,6 +42,13 @@ export const PartnerForm = () => {
               name={"email"}
               label={"Email"}
               placeholder={"Email"}
+              isDisabled={submitting}
+            />
+          </div>
+          <div>
+            <FileUploadField
+              name={"logo"}
+              label={"Upload company logo"}
               isDisabled={submitting}
             />
           </div>
